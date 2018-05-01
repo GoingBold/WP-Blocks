@@ -1,2 +1,2 @@
 # WP-Blocks
-WP Blocks is basically a UI for creating content visually, and when you're done creating, all of the HTML is put in to 'the_content()' to be served to your visitors. This way, things are kept as lightweight as possible, and if you choose to move away from WP Blocks, then all of your content goes with you.
+WP Blocks is a full WYSIWYG content management solution for WordPress. It's built on tried and tested best practices and allows content managers to create phenomenally engaging experiences with absolutely no coding. It takes the best bits of core wp, and builds on them to create a solution fit for sites that demand the very best in content management.
