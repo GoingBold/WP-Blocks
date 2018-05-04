@@ -1,0 +1,1658 @@
+/*
+@package WP Blocks
+@author GoingBold
+@since WP Blocks 1.0
+
+This CSS file contains the CSS needed for the core 'WP Blocks' experience; its basically resetting any styles introduced
+by ACF and setting the basic styles that will be used replicate the front-end (like font size and color) and setting the
+styles for the ACF settings panels (like the true/false toggle and tabs)
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+1 Non-Module-Specific Stuff
+	1.1 Wrappers (Essentially resetting the parent divs, so they don't add any styles, and setting font-size to match front-end)
+		1.1.1 Responsive
+	1.2 Module Control Stuff (CSS for the "add layout", "remove layout" and "edit layout" buttons and "Add Block" button)
+		1.2.1 Responsive
+	1.3 Module Edit Stuff (CSS for the "edit module" section)
+		1.3.1 Responsive
+		1.3.2 Tabs (CSS for changing tabs in to buttons)
+		1.3.3 Repeaters (CSS for getting the repeaters looking a little smarter)
+		1.3.4 Colour Picker (CSS for making sure the colour picker stays open - also a little js needed)
+		1.3.5 Accordions (custom 'Help' accordions that look more WordPressy)
+		1.3.6 Elements
+		1.3.7 Typography
+		1.3.8 Dashicons
+		1.3.9 Width Icons
+	1.4 Settings
+		1.4.1 Intro (This is the intro section when a module settings panel opens)
+		1.4.2 Notice
+		1.4.3 Buttons
+			1.4.3.1 Pretend button (makes a true/false look like a button)
+		1.4.4 Fonts Selector
+		1.4.5 True/False Toggle (makes true/false look like Gutenberg toggle)
+	1.5 Remove padding/margin between header, main content and footer blocks
+	1.6 Hidden/removed
+	1.7 Header, Footer and Colours options page (adds a few superficial styles to jazz up the options pages)
+	1.8 Misc (inc Campaign Pro specific custom styles)
+		1.8.1 Module Settings Panel/s (could prob go in 'module-specific stuff' but some settings (e.g. gradients) are used across multiple modules
+			1.8.1.1 Gradient Selector
+			1.8.1.2 Donation Type
+			1.8.1.3 Image Type
+			1.8.1.4 Grid Selectors
+		1.8.2 Placeholders
+			1.8.2.1 No layout placeholder
+			1.8.2.2 No content placeholder
+		1.8.3 Campaign Pro specific tidbits
+			1.8.3.1 Media
+				1.8.3.1.1 Images
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+1 Non-Module-Specific Stuff
+--------------------------------------------------------------*/
+/*
+ * Makes sure divs clip properly when content (mainly text)
+ * is required to be contained within the div dimensions.
+ */
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+/*--------------------------------------------------------------
+1.1 Wrappers
+--------------------------------------------------------------*/
+/*
+ * IE 11 (and 10?) add overlay sidebars, which means the sidebar for the settings panel is under
+ * the main page sidebar, this changes the behavior so sidebars sit to the side (expected behavior)
+ */
+html.wp-toolbar {
+	-ms-overflow-style: scrollbar;
+}
+
+/*
+ * This class is added to the body tag when settings panel is displayed on screens up to 768px so the 
+ * main content won't scroll.
+ */
+.wp-blocks-open:not(.wp-blocks-closed) #wpwrap {
+	height: 100%;
+	overflow: hidden;
+	width: 100%;
+	position: relative;
+}
+
+/*
+ * This div was causing z-index probs (amongst others) when settings panel open. Have no idea why, but this
+ * seems to sort it.
+ */
+.wp-blocks-open:not(.wp-blocks-closed) #poststuff {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 999999;
+	background: #eee;
+	padding: 0;
+}
+
+/*
+ * This is the main wrapper, at the moment the id '#wp-blocks' is
+ * targeted but this could could probably change to target all 'acf-field-flexible-content'.
+ */
+.acf-field-flexible-content#wp-blocks > .acf-input {
+	background: #fbfafa;
+}
+
+/*
+ * Targets 'acf-flexible-content' that is the child of 'acf-input'
+ * which itself is the child of 'acf-field-flexible-content#wp-blocks'.
+ * Targeting is so specific to make sure we don't target any other 'acf-flexible-content'.
+ */
+.acf-field-flexible-content#wp-blocks > .acf-input > .acf-flexible-content {
+	background: #fff;
+	max-width: 1450px;
+	margin: 0 auto;
+}
+
+/*
+ * Removes margin and border of 'layout' (each module is a layout). This is to
+ * make the div is "style neutral", so it doesn't effect the layout in any way. We don't
+ * want any wrapper divs to declare anything as padding and margin is done by the
+ * content that'll be injected in to them (front-end stuff).
+ */
+.acf-field-flexible-content#wp-blocks .layout {
+	margin: 0;
+	border: 0;
+	background: none;
+	z-index: 9999 !important; /* using '!important' as when dragging and dropping blocks inline z-index is added */
+}
+
+/*
+ * resets z-index for layouts that are collapsed
+ */
+.acf-field-flexible-content#wp-blocks .acf-flexible-content .layout.-collapsed {
+	z-index: 0 !important;
+}
+
+/*
+ * For when dragging and dropping the block
+ */
+.acf-field-flexible-content#wp-blocks .acf-flexible-content .layout.ui-sortable-helper {
+	z-index: 1000 !important;
+}
+
+/*
+ * Places a white overlay (with transparency) over all layouts other than the one that is active
+ */
+#wp-blocks .acf-flexible-content .layout:after {
+	content: "";
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 160px;
+	background: #fff;
+	opacity: .5;
+	z-index: -1;
+}
+
+#wp-blocks .acf-flexible-content .layout.-collapsed:after {
+	content: none !important;
+}
+
+/*
+ * Overlay that covers the content (using z-index) so buttons, links etc can't be clicked
+ */
+.wpb-content-overlay {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	z-index: 985;
+}
+
+/*
+ * A (very) simple effect to show which block is being hovered over
+ */
+.wpb-content-overlay:hover {
+	border-left: 5px solid #ccc;
+	border-right: 5px solid #ccc;
+}
+
+/*
+ * Button that is prepended to active layout which acts as an overlay so when user clicks it, the block collapses
+ */
+#wp-blocks #handle-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-indent: -9999px;
+	font-size: 2px;
+	cursor: pointer;
+	z-index: 999;
+}
+
+/*
+ * Removes padding and border of 'acf-fc-layout-handle'. Also changes the 'font-size',
+ * 'line-height', 'color' and 'font-family' to match the front-end. In theory, whatever
+ * the font-size, line-height, color and font-family are set to on the 'body' of the
+ * front-end can be set here and modules will use it.
+ */
+.acf-field-flexible-content#wp-blocks .layout .acf-fc-layout-handle {
+	padding: 0;
+	border: 0;
+	font-size: 16px;
+	font-size: 1rem;
+	line-height: 1.8; /* have no idea how I left out 'em', but I uuh did */
+	color: #404040;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/*
+ * This padding replicates the margin-bottom of the .hentry on the front-end. It's done here
+ * because the front-end line-height is replicated on the '.acf-fc-layout-handle' which is
+ * every content block - so we only do it on the footer one (as there's only one of them)
+ */
+.post-php .acf-field-flexible-content#wp-blocks.wp-blocks--footer .layout .acf-fc-layout-handle,
+.post-new-php .acf-field-flexible-content#wp-blocks.wp-blocks--footer .layout .acf-fc-layout-handle {
+	padding-top: 1.5em;
+}
+
+/*--------------------------------------------------------------
+1.1.1 Responsive
+--------------------------------------------------------------*/
+@media (min-width: 768px) {
+	.acf-field-flexible-content#wp-blocks .layout .acf-fc-layout-handle {
+		font-size: 19px;
+		font-size: 1.15rem;
+	}
+}
+
+/*--------------------------------------------------------------
+1.2 Module Control Stuff
+--------------------------------------------------------------*/
+/*
+ * Each module has a number (not sure why, but I suppose it's useful in some instances),
+ * anywho, this just moves it out of the way a little.
+ */
+#wp-blocks .acf-flexible-content .layout .acf-fc-layout-order {
+	position: absolute;
+	background: none;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	left: -20px;
+	top: 0;
+}
+
+#wp-blocks .acf-flexible-content .layout .acf-fc-layout-controlls .acf-icon.-collapse {
+	position: fixed;
+	top: 0;
+	right: 0;
+	height: 30px;
+	width: 45px;
+	height: 45px;
+	background: #fff;
+	border-left: 1px solid #e4e4e4 !important;
+	z-index: 10000;
+	border-radius: 0 0 0 100%;
+}
+
+#wp-blocks .acf-flexible-content .layout .acf-fc-layout-controlls .acf-icon.-collapse:before {
+	content: '\f345';
+	top: 5px;
+	right: -5px;
+	font-size: 20px;
+	font-family: "dashicons";
+}
+
+/**
+ * absolutely positions the 'Add Blocks' button so there's no gap between the main content block
+ * and the footer block
+ */
+#wp-blocks .acf-flexible-content > .acf-actions {
+	position: absolute;
+	right: -10px;
+	padding: 20px;
+	background: rgba(255, 255, 255, 0.88);
+	box-shadow: 0 50px 100px rgba(50,50,93,.1), 0 15px 35px rgba(50,50,93,.15), 0 5px 15px rgba(0,0,0,.1);
+	border-radius: 4px;
+	margin-top: -10px;
+}
+
+/*--------------------------------------------------------------
+1.2.1 Responsive
+--------------------------------------------------------------*/
+@media (min-width: 768px) {
+	/*
+	 * An overlay is added to the blocks (so buttons and what not can't be clicked), this
+	 * z-index puts controls above overlay.
+	 */
+	#wp-blocks .acf-flexible-content .layout .acf-fc-layout-controlls {
+		z-index: 990;
+	}
+
+	#wp-blocks .acf-flexible-content .layout .acf-fc-layout-controlls .acf-icon.-collapse {
+		top: 32px;
+		height: 85px;
+		width: 35px;
+		left: auto;
+		right: 400px;
+		border-left: 1px solid #ccc !important;
+		border-right: 1px dashed #e4e4e4 !important;
+		border-bottom: 1px solid #ccc !important;
+		z-index: 9999;
+		border-radius: 0;
+	}
+	
+	#wp-blocks .acf-flexible-content .layout .acf-fc-layout-controlls .acf-icon.-collapse:before {
+		top: 31px;
+		right: 0;
+	}
+}
+
+#wp-blocks .acf-flexible-content .layout.-collapsed .acf-fc-layout-controlls .acf-icon.-collapse {
+	position: relative;
+	top: 0;
+	right: 0;
+	width: inherit;
+	height: inherit;
+	border: inherit;
+	border-radius: 999px;
+	border: 0 !important;
+	z-index: 1;
+}
+
+#wp-blocks .acf-flexible-content .layout.-collapsed .acf-fc-layout-controlls .acf-icon.-collapse:before {
+	content: '\f464';
+	top: -1px;
+	font-size: initial;
+}
+
+/* when wysiwyg editor in full screen make sure close toggle is not above it */
+.mce-fullscreen #wp-blocks .acf-flexible-content .layout .acf-fc-layout-controlls .acf-icon.-collapse {
+	z-index: 0;
+}
+
+/*--------------------------------------------------------------
+1.3 Module Edit Stuff
+--------------------------------------------------------------*/
+/**
+ * This is the main container for the edit gubbins for the modules - CLOSED state.
+ */
+#wp-blocks .acf-flexible-content .layout.-collapsed > .acf-fields {
+	display: block !important;
+	visibility: hidden;
+	opacity: 0;
+	transition-property: transform;
+	transition-property: transform,-webkit-transform;
+	transition-timing-function: ease-in-out;
+	-webkit-transform: translateX(100%);
+	transform: translateX(100%);
+	z-index: 0;
+}
+
+/**
+ * This is the main container for the edit gubbins for the modules - OPEN state. So when a user clicks
+ * a module to edit, its this that appears.
+ */
+#wp-blocks .acf-flexible-content .layout > .acf-fields {
+	position: fixed;
+	width: 100%;
+	background: #edeff0;
+	z-index: 9999;
+	top: 0;
+	right: 0;
+	border-left: 1px solid #ccc;
+	box-shadow: 0 0 10px 0 #b3b3b3;
+	opacity: 1;
+	margin-bottom: 40px;
+	-webkit-transition: -webkit-transform .45s cubic-bezier(.4,1.5,.5,1);
+			transition: transform .45s cubic-bezier(.4,1.5,.5,1);
+	overflow: scroll;
+	height: 100%;
+	-webkit-overflow-scrolling: touch; /* momentum scrolling */
+}
+
+/*--------------------------------------------------------------
+1.3.1 Responsive
+--------------------------------------------------------------*/
+@media (min-width: 768px) {
+	#wp-blocks .acf-flexible-content .layout > .acf-fields {
+		width: 400px;
+		border-left: 1px solid #ccc;
+		padding-top: 32px;
+	}
+}
+
+/*--------------------------------------------------------------
+1.3.2 Tabs
+--------------------------------------------------------------*/
+#wp-blocks .acf-fields > .acf-tab-wrap.-top .acf-tab-group {
+	position: absolute;
+	right: 0;
+	border: 0 !important;
+	padding: 0;
+}
+
+#wp-blocks .acf-tab-wrap.-top .acf-tab-group li.active a {
+	position: absolute;
+}
+
+#wp-blocks .acf-fields > .acf-tab-wrap.-top .acf-tab-group li.active a {
+	display: none;
+}
+
+#wp-blocks .acf-tab-wrap.-top .acf-tab-group li {
+	margin: 0;
+	float: right;
+}
+
+#wp-blocks .acf-fields > .acf-tab-wrap.-top .acf-tab-group li a {
+	border-radius: 0 0 0 33px;
+	border: 0;
+	font-size: .8em;
+	background: #00b8ff;
+	text-indent: -9999px;
+	overflow: hidden;
+	padding: 0;
+	height: 35px;
+	width: 35px;
+	color: #fff;
+	font-size: 18px;
+	box-shadow: 0 0 10px 0 #aee8ff;
+	overflow: hidden;
+	font-family: dashicons;
+	text-align: center;
+	font-weight: normal;
+}
+
+#wp-blocks .acf-fields > .acf-tab-wrap.-top .acf-tab-group li a:before {
+	content: '\f111';
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	height: 100%;
+	width: 100%;
+	text-indent: 0;
+}
+
+#wp-blocks .acf-fields > .acf-tab-wrap.-top .acf-tab-group li:first-child a:before {
+	content: '\f171';
+}
+
+#wp-blocks .acf-fields > .acf-tab-wrap.-top .acf-tab-group li a:hover,
+#wp-blocks .acf-fields > .acf-tab-wrap.-top .acf-tab-group li a:active,
+#wp-blocks .acf-fields > .acf-tab-wrap.-top .acf-tab-group li a:focus {
+	background: #1da8de;
+}
+
+/*--------------------------------------------------------------
+1.3.3 Repeaters
+--------------------------------------------------------------*/
+/**
+ * Wrapper for all the repeaters
+ */
+#wp-blocks .acf-repeater > .acf-table {
+	background: none;
+	border: none;
+}
+
+/**
+ * Wrapper for each repeater
+ */
+#wp-blocks .acf-repeater .acf-row {	
+	max-height: 100%;
+	border: 1px solid #b5b5b5;
+	-webkit-transition: max-height 2s ease-in-out;
+			transition: max-height 2s ease-in-out;
+	margin: 0 0 20px 20px;
+	display: block;
+}
+
+/**
+ * ensures fields take up whole width (as inline style is added by acf that sets width)
+ */
+#wp-blocks .acf-repeater .acf-row .acf-fields {
+	width: 100% !important;
+}
+
+/**
+ * Creates a little button that users click and drag to move the repeater
+ */
+#wp-blocks .acf-input > .acf-repeater .acf-row-handle > span {
+	font-size: 16px;
+	font-weight: 700;
+	position: absolute;
+	top: -1px;
+	background: #f4f4f4;
+	height: 46px;
+	z-index: 99;
+	text-align: center;
+	width: 30px;
+	left: -25px;
+	border: 1px dashed #ccc;
+	padding-top: 6px;
+}
+
+/**
+ * Adds a little grab icon to the above button thingy
+ */
+#wp-blocks .acf-input > .acf-repeater .acf-row-handle.order span:before {
+	content: "\f545";
+	position: absolute;
+	font-family: "dashicons";
+	bottom: 0px;
+	z-index: 99;
+	left: 1px;
+	font-size: 15px;
+	padding: 5px 7px;
+	font-weight: normal;
+}
+
+#wp-blocks .acf-input > .acf-repeater .acf-row-handle.order:hover:before,
+#wp-blocks .acf-input > .acf-repeater .acf-row-handle.order:hover:after {
+	background-color: #666666;
+}
+
+#wp-blocks .acf-repeater .acf-row-handle .acf-icon.-minus {
+	top: 0 !important;
+	right: -44px;
+}
+
+#wp-blocks .acf-input > .acf-repeater .acf-row-handle {
+	padding: 0;
+	width: 0 !important;
+}
+
+#wp-blocks .acf-repeater .acf-row-handle.remove {
+	left: -90px;
+	border: 0;
+}
+
+/*--------------------------------------------------------------
+1.3.4 Colour Picker (CSS for making sure the colour picker stays open - also a little js needed)
+--------------------------------------------------------------*/
+#wp-blocks .wp-picker-input-wrap {
+	display: none;
+}
+
+#wp-blocks .keep-darn-thing-open .wp-picker-input-wrap {
+	display: inline-block;
+	vertical-align: top;
+}
+
+#wp-blocks .iris-picker {
+	display: none !important;
+}
+
+#wp-blocks .keep-darn-thing-open .iris-picker {
+	display: block !important;
+}
+
+/*--------------------------------------------------------------
+1.3.5 Accordions (custom 'Help' accordions that look more WordPressy)
+--------------------------------------------------------------*/
+/**
+ * 'wpb-accordion-helper-styler' is added to the ACF field above the accordion to target it
+ * as its not possible to add classes to accordions (yet).
+ */
+ .wpb-accordion-helper-styler + .acf-field-accordion {
+	border: 0 !important;
+	background: none !important;
+	padding: 0 !important;
+}
+
+/* Styling for 'acf-accordion-title' */
+.wpb-accordion-helper-styler + .acf-field-accordion > .acf-accordion-title {
+	padding: 3px 7px 0 20px !important;
+	z-index: 999;
+	background: #0085ba;
+	border-color: #0073aa #006799 #006799;
+	box-shadow: 0 1px 0 #006799;
+	color: #fff;
+	text-decoration: none;
+	text-shadow: 0 -1px 1px #006799, 1px 0 1px #006799, 0 1px 1px #006799, -1px 0 1px #006799;
+	cursor: pointer;
+	border-width: 1px;
+	border-style: solid;
+	-webkit-appearance: none;
+	border-radius: 3px;
+	height: 28px;
+	overflow: hidden;
+	display: inline-block;
+}
+
+/* Styling for 'acf-accordion-title' */
+.wpb-accordion-helper-styler + .acf-field-accordion > .acf-accordion-title:before {
+	content: "\f223";
+	position: absolute;
+	top: 4px;
+	left: 3px;
+	width: 100%;
+	height: 100%;
+	font-family: dashicons;
+	text-indent: 0 !important;
+	font-size: 21px;
+	font-weight: normal;
+}
+
+/* Styling for 'acf-accordion-title' when accordion open */
+.wpb-accordion-helper-styler + .acf-field-accordion.-open > .acf-accordion-title:before {
+	content: "\f460";
+}
+
+/* Styling for 'acf-accordion-title' hover state */
+.wpb-accordion-helper-styler + .acf-field-accordion > .acf-accordion-title:hover {
+	background: #008ec2;
+	border-color: #006799;
+	color: #fff;
+}
+
+/* Styling for 'acf-accordion-title' active state */
+.wpb-accordion-helper-styler + .acf-field-accordion > .acf-accordion-title:active {
+    box-shadow: 0 1px 0 #0073aa,0 0 2px 1px #33b3db
+}
+
+/* Styling for 'acf-accordion-title' focus state and when accordion open */
+.wpb-accordion-helper-styler + .acf-field-accordion > .acf-accordion-title:focus,
+.wpb-accordion-helper-styler + .acf-field-accordion.-open > .acf-accordion-title {
+	background: #0073aa;
+	border-color: #006799;
+	box-shadow: inset 0 2px 0 #006799;
+	vertical-align: top
+}
+
+/* Reducing font weight on label (to match rest of page) */
+.wpb-accordion-helper-styler + .acf-field-accordion > .acf-accordion-title > label {
+	font-weight: normal;
+}
+
+/* Changes arrow to point down (instead of right) when accordion closed */
+.wpb-accordion-helper-styler + .acf-field-accordion > .acf-accordion-title .dashicons-arrow-right:before {
+    content: "\f140";
+}
+
+/* Changes arrow to point up (instead of down) when accordion open */
+.wpb-accordion-helper-styler + .acf-field-accordion.-open > .acf-accordion-title .dashicons-arrow-down:before {
+    content: "\f142";
+}
+
+/* Styling for 'acf-accordion-content' (the content wrapper when accordion is open) */
+.wpb-accordion-helper-styler + .acf-field-accordion > .acf-accordion-content {
+	border: 1px solid #006799;
+	padding: 0 10px;
+	background: #f8f8f8;
+	margin: -7px 0 0 7px !important;
+}
+
+/*--------------------------------------------------------------
+1.3.6 Elements
+--------------------------------------------------------------*/
+/* Styles hr to act as divider */
+.hr--wpb-divider {
+	border: 0;
+	border-top: #DFDFDF solid 1px;
+	margin: 0 0 20px;
+	max-width: 100%;
+}
+
+/*--------------------------------------------------------------
+1.3.7 Typography
+--------------------------------------------------------------*/
+/* Styling for H2s */
+#poststuff .h2--wpb {
+	padding: 0;
+	line-height: 1em;
+	font-size: 18px;
+}
+
+/* Styling for H3s */
+#poststuff .h3--wpb {
+	font-weight: normal;
+	margin: 0;
+}
+
+/* Paragraphs in the same wrapper as the heading (usually intro blurb) don't need margin bottom */
+.wpb-heading-container .acf-input > p {
+	margin-bottom: 0;
+}
+
+/* Used on the options page of the Campaign Pro Exp1 plugin, its a block, but sneaking it in here, shhh, don't tell anyone ;-) */
+.acf-field.wpb-heading-container {
+	padding-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+1.3.8 Dashicons
+--------------------------------------------------------------*/
+/* Hides text (so only icon is visible) */
+#wp-blocks .dashicons {
+	overflow: hidden;
+}
+
+/*--------------------------------------------------------------
+1.3.9 Width Icons
+--------------------------------------------------------------*/
+.wpb-width .acf-button-group label {
+	font-size: .85em;
+	width: 69px;
+	overflow: hidden;
+	height: 51px;
+	position: relative;
+	text-transform: lowercase;
+	font-style: italic;
+	padding-top: 27px;
+}
+
+.wpb-width .acf-button-group label:before {
+	content: "";
+	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/admin/width/wpb-width-icon-sprite.png);
+	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/admin/width/wpb-width-icon-sprite.svg);
+	background-repeat: no-repeat;
+	background-position: center 0px;
+	position: absolute;
+	top: 9px;
+	width: 50px;
+	margin: auto;
+	right: 0;
+	left: 0;
+	height: 15px;
+}
+
+.wpb-width .acf-button-group label + label:before {
+	background-position: center -18px;
+}
+
+.wpb-width .acf-button-group label + label + label:before {
+	background-position: center -37px;
+}
+
+/*--------------------------------------------------------------
+1.4 Settings
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+1.4.1 Intro (This is the intro section when a module settings panel opens)
+--------------------------------------------------------------*/
+/* intro wrapper */
+.wp-blocks-settings-intro {
+	background: #fff;
+	padding: 11px 0 !important;
+	border-bottom: 1px solid #e4e4e4;
+	height: 85px;
+}
+
+.wp-blocks-settings-intro h2 {
+	font-size: 1.4em !important;
+	font-style: italic;
+}
+
+.wp-blocks-settings-intro h2 > span {
+	font-size: 13px;
+	padding: 0;
+	color: #5a5a5a;
+	font-style: normal;
+	display: block;
+}
+
+/*--------------------------------------------------------------
+1.4.2 Notice
+--------------------------------------------------------------*/
+.wpb-settings-notice {
+	background: #fff;
+	border-left: 4px solid #00a0d2;
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+	margin: -5px 0 15px;
+	padding: 12px;
+}
+
+.wpb-settings-notice > p {
+	margin: 0;
+}
+
+/*--------------------------------------------------------------
+1.4.3 Buttons
+--------------------------------------------------------------*/
+/* If there's flex, IE11 gets all confused about the width of the label */
+#wp-blocks .acf-button-group label {
+	flex: none;
+}
+
+/* Hidden by default */
+.wpb-btn-selected {
+	display: none;
+}
+
+/* Adds a tick to the selected button */
+.selected .wpb-btn-selected {
+	display: block;
+	position: absolute;
+	top: -11px;
+	left: 8px;
+	background: #fff;
+	color: #319cf3;
+	height: 21px;
+	width: 21px;
+	overflow: hidden;
+	border-radius: 999px;
+	border: 1px solid #319cf3;
+	line-height: 1em;
+	padding: 0;
+}
+
+/*--------------------------------------------------------------
+1.4.3.1 Pretend button (makes a true/false look like a button)
+--------------------------------------------------------------*/
+.wpb-pretend-button .acf-switch {
+	background: #0085ba;
+	border-color: #0073aa #006799 #006799;
+	box-shadow: 0 1px 0 #006799;
+	color: #fff;
+	text-decoration: none;
+	text-shadow: 0 -1px 1px #006799, 1px 0 1px #006799, 0 1px 1px #006799, -1px 0 1px #006799;
+	border-radius: 3px;
+	border-width: 1px;
+	border-style: solid;
+}
+
+/* changes button to red when it's on */
+.wpb-pretend-button .acf-switch.-on {
+	background: #F55E4F;
+	border-color: #e21717 #f53b3b #ec2a2a;
+	text-shadow: 0 -1px 1px #90362d, 1px 0 1px #c8353a, 0 1px 1px #ca4a3e, -1px 0 1px #bf3b40;
+	box-shadow: 0 1px 0 #c71838;
+}
+
+/* changes text shadow from blue to red */
+.wpb-pretend-button .acf-switch .acf-switch-on {
+	text-shadow: 0 -1px 1px #90362d, 1px 0 1px #c8353a, 0 1px 1px #ca4a3e, -1px 0 1px #bf3b40;
+}
+
+/* hide the on text and slider, and hides the off text when the button is active */
+.wpb-pretend-button .acf-switch-on,
+.wpb-pretend-button .-on .acf-switch-off,
+.wpb-pretend-button .acf-switch-slider {
+	display: none;
+}
+
+/* shows the on text when the button is active */
+.wpb-pretend-button .-on .acf-switch-on {
+	display: block;
+}
+
+/*--------------------------------------------------------------
+1.4.4 Fonts Selector
+--------------------------------------------------------------*/
+.wpb-font-selector .acf-button-group label {
+	border-radius: 3px;
+	margin-left: 10px;
+	width: 100px;
+}
+
+.wpb-font-selector label:first-child {
+	margin-left: 0;
+}
+
+.wpb-font-icon-1,
+.wpb-font-icon-2 {
+	display: block;
+	width: 50px;
+	height: 39px;
+	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/admin/fonts/gf-and-tk-icons.png);
+	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/admin/fonts/gf-and-tk-icons.svg);
+	background-repeat: no-repeat;
+	background-position: center 0px;
+	margin: 5px auto;
+}
+
+.wpb-font-icon-2 {
+	background-position: center -83px;
+}
+
+.selected .wpb-font-icon-1 {
+	background-position: center -42px;
+}
+
+.selected .wpb-font-icon-2 {
+	background-position: center -124px;
+}
+
+.wpb-custom-font {
+	display: block;
+}
+
+.wpb-custom-font > span.dashicons {
+	display: block;
+	text-align: center;
+	width: 100%;
+	font-size: 40px;
+	height: 39px;
+	margin: 5px 0;
+}
+
+/*--------------------------------------------------------------
+1.4.5 True/False
+--------------------------------------------------------------*/
+/* de facto toggle wrapper */
+.wpb-true-false .acf-switch {
+	padding-left: 47px;
+	height: auto;
+	border: 0;
+	background: none;
+}
+
+.wpb-true-false .acf-switch.-on:hover {
+	background: none;
+}
+
+/* Hides relevant state */
+.wpb-true-false .acf-switch .acf-switch-on,
+.wpb-true-false .acf-switch.-on .acf-switch-off {
+	display: none;
+	color: inherit;
+	text-shadow: none;
+}
+
+/* Shows relevant state */
+.wpb-true-false .acf-switch.-on .acf-switch-on {
+	display: block;
+}
+
+.wpb-true-false .acf-switch span {
+	min-width: auto !important; /* !important required as inline styles are added */
+	padding: 0;
+}
+
+/* gets the slider looking Gutenbergish */
+.wpb-true-false .acf-switch-slider {
+	border: 2px solid;
+	width: 35px;
+	border-radius: 999px;
+	right: auto;
+	left: 0;
+	height: 18px;
+	position: absolute;
+	-webkit-transition: background .2s ease;
+	   -moz-transition: background .2s ease;
+	     -o-transition: background .2s ease;
+	    -ms-transition: background .2s ease;
+			transition: background .2s ease;
+}
+
+.wpb-true-false .acf-switch:hover .acf-switch-slider {
+	border-color: initial;
+	background: #eee;
+}
+
+.wpb-true-false .acf-switch.-focus .acf-switch-slider {
+	box-shadow: 0 0 0 1px #fff, 0 0 0 2px #33b3db, 0 0 2px 2px #33b3db;
+	border-color: initial;
+	background-color: #eee;
+}
+
+.wpb-true-false .acf-switch.-on .acf-switch-slider {
+	left: 0;
+	right: auto;
+	background-color: #33b3db;
+	border: 2px solid #33b3db;
+}
+
+/* adds a circle (that moves from left to right depending if toggle is true/false ) */
+.wpb-true-false .acf-switch-slider:before {
+	content: "";
+	position: absolute;
+	border: 2px solid;
+	border-radius: 999px;
+	width: 10px;
+	height: 10px;
+	top: 2px;
+	left: 3px;
+	background: #fff;
+	-webkit-transition: margin .1s ease;
+	   -moz-transition: margin .1s ease;
+	     -o-transition: margin .1s ease;
+	    -ms-transition: margin .1s ease;
+			transition: margin .1s ease;
+}
+
+.wpb-true-false .acf-switch.-focus .acf-switch-slider:before {
+	background: #444;
+}
+
+.wpb-true-false .acf-switch.-on .acf-switch-slider:before {
+	background: #1e8cbe;
+	border-color: #fff;
+	margin-left: 16px;
+}
+
+.wpb-true-false .acf-switch.-focus.-on .acf-switch-slider:before {
+	background: #fff;
+}
+
+/* displayed just below the toggle (usually provides explanation of toggle) */
+.wpb-true-false span.message {
+	display: block;
+	margin: 0;
+	font-style: italic;
+	padding-left: 47px;
+	font-size: .9em;
+}
+
+/*--------------------------------------------------------------
+1.5 Remove padding/margin between header, main content and footer blocks
+--------------------------------------------------------------*/
+/*
+ * Margin top to add a bit of space between blocks and permalink on the post edit screen, also adds the background
+ * colour for the main body here (as the margins between header, main and footer blocks create a bit of space that would
+ * otherwise be the default WP post edit screen colour)
+ */
+#acf_after_title-sortables {
+	margin-top: 20px;
+	background: #ffffff;
+}
+
+#acf_after_title-sortables .acf-postbox {
+	margin: 0;
+}
+
+/*
+ * Can't target this with '#wp-blocks' because its the parent of the parent of the parent div
+ */
+.postbox.acf-postbox.seamless {
+	margin: 0;
+}
+
+/*
+ * Removes padding top and bottom so there is no gap between the header, main content and
+ * footer blocks on the post edit screen.
+ */
+#wp-blocks.acf-field {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+/*
+ * Hides labels for the blocks (same reason as above, so there is no gab between the blocks on the
+ * post edit screen)
+ */
+#wp-blocks > .acf-label {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+#wp-blocks .acf-flexible-content > .values {
+	margin: 0;
+}
+
+/*--------------------------------------------------------------
+1.6 Hidden/removed
+--------------------------------------------------------------*/
+/*
+ * Default post editor - this is hidden, but if the 'the_content()' is not empty and there
+ * aren't any WP Blocks then a notice appears with a button that the user can click to display
+ * the default editor (the notice advises that anything in the default post editor with be replaced
+ * by WP Blocks)
+ */
+#postdivrich.postarea {
+    display: none;
+    border: 2px solid rgb(255, 0, 0);
+    padding: 0 20px 20px;
+    margin-top: 20px;
+}
+
+.wp-blocks--visual-options .layout .acf-fc-layout-controlls .acf-icon.-collapse {
+	display: block;
+}
+
+/*
+ * Not needed as header and footer only display the header/footer from the options page (could remove from dom with javascript
+ * but performance overhead in doing so)
+ */
+.wp-blocks--visual-options > .acf-input > .acf-flexible-content > .acf-actions,
+.wp-blocks--visual-options .acf-flexible-content .layout .acf-fc-layout-order,
+.wp-blocks--visual-options .acf-fc-layout-controlls .acf-icon.-plus,
+.wp-blocks--visual-options .acf-fc-layout-controlls .acf-icon.-minus,
+.wp-blocks--visual-options .layout.-collapsed .acf-fc-layout-controlls .acf-icon.-collapse {
+	display: none;
+}
+
+/*--------------------------------------------------------------
+1.7 Header, Footer and Colours options page (adds a few superficial styles to jazz up the options pages)
+--------------------------------------------------------------*/
+/* adds a dashed line above and below the header/footer/colours and add some padding and margin to sort spacings */
+.acf-settings-wrap .acf-field-flexible-content#wp-blocks.wp-blocks--visual-options {
+	position: relative;
+	background: #f2f2f2;
+	margin: 40px auto;
+	padding: 55px 0;
+	border-top: 2px dashed #ccc;
+	border-bottom: 2px dashed #ccc;
+}
+
+/* Slight padding change for colours */
+.theme-settings_page_campaign-pro-colours .acf-settings-wrap .acf-field-flexible-content#wp-blocks.wp-blocks--visual-options {
+	padding: 55px 0 40px;
+}
+
+/* Changes the background to match the default WP admin background */
+.theme-settings_page_campaign-pro-colours .acf-field-flexible-content#wp-blocks > .acf-input > .acf-flexible-content {
+	background: #f2f2f2;
+}
+
+/* adds the word 'Header' with some arrows that sits on the dashed lines */
+.acf-settings-wrap .acf-field-flexible-content#wp-blocks.wp-blocks--visual-options:before,
+.acf-settings-wrap .acf-field-flexible-content#wp-blocks.wp-blocks--visual-options:after {
+	font-family: dashicons;
+    content: "\f347 \f347";
+    position: absolute;
+    top: -10px;
+    width: 100px;
+    background-color: #f2f2f2;
+    height: 20px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: lowercase;
+    font-size: .9em;
+    white-space: pre;
+}
+
+.acf-settings-wrap .acf-field-flexible-content#wp-blocks.wp-blocks--visual-options:after {
+    content: "\f343 \f343";
+	top: auto;
+	bottom: -10px;
+}
+
+/*--------------------------------------------------------------
+1.8 Misc (inc Campaign Pro specific custom styles)
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+1.8.1 Module Settings Panel/s
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+1.8.1.1 Gradient Selector
+--------------------------------------------------------------*/
+#wp-blocks .wpb-choose-gradient .acf-button-group {
+	width: 247px;
+	display: block;
+}
+
+#wp-blocks .wpb-choose-gradient label {
+	margin: 0 0 -1px -1px;
+	border-radius: 0;
+}
+
+#wp-blocks .wpb-choose-gradient label > span {
+	display: block;
+	width: 20px;
+	overflow: hidden;
+	text-indent: -9999px;
+	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/admin/gradients/wpb-gradient-icon-sprite.png);
+	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/admin/gradients/wpb-gradient-icon-sprite.svg);
+	background-repeat: no-repeat;
+}
+
+#wp-blocks .wpb-choose-gradient span.xxs {
+	background-position: -5px 0;
+}
+
+#wp-blocks .wpb-choose-gradient .selected span.xxs {
+	background-position: -5px -23px;
+}
+
+#wp-blocks .wpb-choose-gradient span.xs {
+	background-position: -35px 0;
+}
+
+#wp-blocks .wpb-choose-gradient .selected span.xs {
+	background-position: -35px -23px;
+}
+
+#wp-blocks .wpb-choose-gradient span.s {
+	background-position: -60px 0;
+}
+
+#wp-blocks .wpb-choose-gradient .selected span.s {
+	background-position: -60px -23px;
+}
+
+#wp-blocks .wpb-choose-gradient span.m {
+	background-position: -90px 0;
+}
+
+#wp-blocks .wpb-choose-gradient .selected span.m {
+	background-position: -90px -23px;
+}
+
+#wp-blocks .wpb-choose-gradient span.l {
+	background-position: -115px 0;
+}
+
+#wp-blocks .wpb-choose-gradient .selected span.l {
+	background-position: -115px -23px;
+}
+
+#wp-blocks .wpb-choose-gradient span.xl {
+	background-position: -145px 0;
+}
+
+#wp-blocks .wpb-choose-gradient .selected span.xl {
+	background-position: -145px -23px;
+}
+
+#wp-blocks .wpb-choose-gradient span.xxs--l-r {
+	background-position: -11px -49px;
+}
+
+#wp-blocks .wpb-choose-gradient .selected span.xxs--l-r {
+	background-position: -11px -77px;
+}
+
+#wp-blocks .wpb-choose-gradient span.xs--l-r {
+	background-position: -38px -49px;
+}
+
+#wp-blocks .wpb-choose-gradient .selected span.xs--l-r {
+	background-position: -38px -77px;
+}
+
+#wp-blocks .wpb-choose-gradient span.s--l-r {
+	background-position: -65px -49px;
+}
+
+#wp-blocks .wpb-choose-gradient .selected span.s--l-r {
+	background-position: -65px -77px;
+}
+
+#wp-blocks .wpb-choose-gradient span.m--l-r {
+	background-position: -92px -49px;
+}
+
+#wp-blocks .wpb-choose-gradient .selected span.m--l-r {
+	background-position: -92px -77px;
+}
+
+#wp-blocks .wpb-choose-gradient span.l--l-r {
+	background-position: -120px -49px;
+}
+
+#wp-blocks .wpb-choose-gradient .selected span.l--l-r {
+	background-position: -120px -77px;
+}
+
+#wp-blocks .wpb-choose-gradient span.xl--l-r {
+	background-position: -147px -49px;
+}
+
+#wp-blocks .wpb-choose-gradient .selected span.xl--l-r {
+	background-position: -147px -77px;
+}
+
+#wp-blocks .wpb-choose-gradient span.xxs--r-l {
+	background-position: 3px -110px;
+}
+
+#wp-blocks .wpb-choose-gradient .selected span.xxs--r-l {
+	background-position: 3px -140px;
+}
+
+#wp-blocks .wpb-choose-gradient span.xs--r-l {
+	background-position: -27px -110px;
+}
+
+#wp-blocks .wpb-choose-gradient .selected span.xs--r-l {
+	background-position: -27px -140px;
+}
+
+#wp-blocks .wpb-choose-gradient span.s--r-l {
+	background-position: -57px -110px;
+}
+
+#wp-blocks .wpb-choose-gradient .selected span.s--r-l {
+	background-position: -57px -140px;
+}
+
+#wp-blocks .wpb-choose-gradient span.m--r-l {
+	background-position: -86px -110px;
+}
+
+#wp-blocks .wpb-choose-gradient .selected span.m--r-l {
+	background-position: -86px -140px;
+}
+
+#wp-blocks .wpb-choose-gradient span.l--r-l {
+	background-position: -116px -110px;
+}
+
+#wp-blocks .wpb-choose-gradient .selected span.l--r-l {
+	background-position: -116px -140px;
+}
+
+#wp-blocks .wpb-choose-gradient span.xl--r-l {
+	background-position: -146px -110px;
+}
+
+#wp-blocks .wpb-choose-gradient .selected span.xl--r-l {
+	background-position: -146px -140px;
+}
+
+/*--------------------------------------------------------------
+1.8.1.2 Donation Type
+--------------------------------------------------------------*/
+.wpb-donation-cards,
+.wpb-donation-block,
+.wpb-donation-quick {
+	display: block;
+	width: 75px;
+	height: 72px;
+	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/admin/donations/wpb-donations-icon-sprite.png);
+	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/admin/donations/wpb-donations-icon-sprite.svg);
+	background-repeat: no-repeat;
+	background-position: center 9px;
+}
+
+.wpb-donation-block {
+	background-position: center -53px;
+}
+
+.wpb-donation-quick {
+	background-position: 4px -125px;
+}
+
+/*--------------------------------------------------------------
+1.8.1.3 Image Type
+--------------------------------------------------------------*/
+.wpb-image-selector .acf-button-group label {
+	font-size: .85em;
+	width: 110px;
+	overflow: hidden;
+	height: 118px;
+	position: relative;
+	text-transform: lowercase;
+	font-style: italic;
+}
+
+.wpb-image-selector .acf-button-group label:before {
+	content: "";
+	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/admin/image/wpb-image-sprite.png);
+	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/admin/image/wpb-image-sprite.svg);
+	background-repeat: no-repeat;
+	background-position: center 0px;
+	position: absolute;
+	top: 34px;
+	width: 70px;
+	margin: auto;
+	right: 0;
+	left: 0;
+	height: 64px;
+}
+
+.wpb-image-selector .acf-button-group label + label:before {
+	background-position: center -61px;
+	height: 73px;
+	top: 24px;
+}
+
+/*--------------------------------------------------------------
+1.8.1.4 Grid Selectors
+--------------------------------------------------------------*/
+.wpb-grid-selector .acf-button-group label,
+.wpb-grid-selector--width .acf-button-group label {
+	font-size: .85em;
+	width: 92px;
+	overflow: hidden;
+	height: 82px;
+	position: relative;
+	text-transform: lowercase;
+	font-style: italic;
+}
+
+.wpb-grid-selector--width .acf-button-group label {
+	width: 70px;
+	height: 60px;
+}
+
+.wpb-grid-selector .acf-button-group label:before,
+.wpb-grid-selector--width .acf-button-group label:before {
+	content: "";
+	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/admin/grid/wpb-grid-sprite.png);
+	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/admin/grid/wpb-grid-sprite.svg);
+	background-repeat: no-repeat;
+	background-position: center 1px;
+	position: absolute;
+	bottom: 10px;
+	width: 70px;
+	margin: auto;
+	right: 0;
+	left: 0;
+	height: 44px;
+}
+
+.wpb-grid-selector--width .acf-button-group label:before {
+	height: 23px;
+	background-position: 11px -90px;
+}
+
+.wpb-grid-selector .acf-button-group label + label:before {
+	background-position: center -44px;
+}
+
+.wpb-grid-selector--width .acf-button-group label + label:before {
+	background-position: 12px -115px;
+}
+
+/*--------------------------------------------------------------
+1.8.2 Placeholders
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+1.8.2.1 No layout placeholder
+--------------------------------------------------------------*/
+#wp-blocks .acf-flexible-content .no-value-message {
+	border: 0;
+	padding: 75px 50px;
+	margin-bottom: 20px;
+	text-transform: lowercase;
+	font-size: 1.25em;
+	font-style: italic;
+	line-height: 1.8;
+}
+
+/*--------------------------------------------------------------
+1.8.3.2 No content placeholder
+--------------------------------------------------------------*/
+.wp-blocks-placeholder {
+	border-top: 2px dashed #ccc;
+	border-bottom: 2px dashed #ccc;
+	margin: 30px 0;
+	padding: 60px;
+	text-align: center;
+	font-weight: 700;
+	font-family: Arial,Helvetica,sans-serif;
+	color: #333333;
+	text-transform: lowercase;
+	font-style: italic;
+	font-weight: normal;
+	font-size: .75em;
+	background: #fff;
+}
+
+.wp-blocks-placeholder.wp-blocks-placeholder--header {
+	padding: 30px 60px 60px;
+	margin: 0;
+	border-top: 0;
+}
+
+.wp-blocks-placeholder.wp-blocks-placeholder--footer {
+	padding: 22px 60px 60px;
+	margin: 0;
+	border-bottom: 0;
+	clear: both;
+}
+
+.theme-settings_page_campaign-pro-header .wp-blocks-placeholder.wp-blocks-placeholder--header,
+.theme-settings_page_campaign-pro-footer .wp-blocks-placeholder.wp-blocks-placeholder--footer {
+	border: 0;
+	background: #f2f2f2;
+}
+
+.wp-blocks-placeholder__content {
+	padding-top: 42px;
+	position: relative;
+}
+
+.wp-blocks-placeholder--header .wp-blocks-placeholder__content,
+.wp-blocks-placeholder--footer .wp-blocks-placeholder__content {
+	padding-top: 0;
+	padding-bottom: 86px;
+}
+
+.wp-blocks-placeholder__content:before {
+	content: '';
+	background: url(/wp-admin/images/wpspin_light-2x.gif) no-repeat;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	margin: auto;
+	background-size: 25px 25px;
+	opacity: .7;
+	filter: alpha(opacity=70);
+	width: 25px;
+	height: 25px;
+}
+
+.wp-blocks-placeholder__content:before {
+	font-family: "dashicons";
+	font-size: 30px;
+	font-style: normal;
+	top: -2px;
+	left: -5px;
+	background: none;
+}
+
+.wp-blocks-placeholder--header .wp-blocks-placeholder__content:before,
+.wp-blocks-placeholder--footer .wp-blocks-placeholder__content:before {
+	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/placeholders/wpb-header-footer-placeholder.png);
+	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/placeholders/wpb-header-footer-placeholder.svg);
+	background-repeat: no-repeat;
+	height: 116px;
+	width: 425px;
+	background-position: center 30px;
+	top: 0;
+	bottom: 0;
+}
+
+.wp-blocks-placeholder--footer .wp-blocks-placeholder__content:before {
+	background-position: center -91px;
+	top: 60px;
+}
+
+[data-layout="hero"] .wp-blocks-placeholder__content:before {
+	content: "\f134";
+}
+
+[data-layout="section"] .wp-blocks-placeholder__content:before {
+	content: "\f134";
+}
+
+[data-layout="text"] .wp-blocks-placeholder__content:before {
+	content: "\f478";
+}
+
+[data-layout="heading"] .wp-blocks-placeholder__content:before {
+	content: "\f215";
+}
+
+[data-layout="accordions"] .wp-blocks-placeholder__content:before {
+	content: "\f163";
+}
+
+[data-layout="donate"] .wp-blocks-placeholder__content:before {
+	content: "\f526";
+}
+
+[data-layout="form"] .wp-blocks-placeholder__content:before {
+	content: "\f314";
+}
+
+[data-layout="alert"] .wp-blocks-placeholder__content:before {
+	content: "\f348";
+}
+
+[data-layout="image"] .wp-blocks-placeholder__content:before {
+	content: "\f161";
+}
+
+[data-layout="show"] .wp-blocks-placeholder__content:before {
+	content: "\f105";
+}
+
+[data-layout="grid"] .wp-blocks-placeholder__content:before {
+	content: "\f538";
+}
+
+[data-layout="stats"] .wp-blocks-placeholder__content:before {
+	content: "\f118";
+}
+
+[data-layout="big-text"] .wp-blocks-placeholder__content:before {
+	content: "\f200";
+}
+
+[data-layout="action"] .wp-blocks-placeholder__content:before {
+	content: "\f488";
+}
+
+[data-layout="shortcode"] .wp-blocks-placeholder__content:before {
+	content: "\f475";
+}
+
+/*--------------------------------------------------------------
+1.8.3 Campaign Pro specific tidbits
+--------------------------------------------------------------*/
+.wp-blocks--header .entry-meta,
+.wp-blocks--footer span.cat-links,
+.wp-blocks--footer .post-navigation {
+	display: none;
+}
+
+/* Only display these on post edit screen (as entry-meta and categories are only shown on posts) */
+.post-type-post .wp-blocks--header .entry-meta,
+.post-type-post .wp-blocks--footer span.cat-links,
+.post-type-post .wp-blocks--footer .post-navigation {
+	display: block;
+}
+
+/* Hides the message in the footer settings about Exp 1 plugin not being installed; if
+ * Exp1 is not installed then styles added via function 'cp_acf_admin_head_exp1' in
+ * admin functions to display this message
+ */
+.wpb-if-no-exp1-show {
+	display: none;
+}
+
+/*--------------------------------------------------------------
+1.8.3.1 Media
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+1.8.3.1.1 Images
+--------------------------------------------------------------*/
+/* Styling for image field */
+.acf-fields > .acf-wpb-image  {
+	padding-top: 0;
+	margin: 15px 0 -20px 0;
+}
+
+/* Styling for 2x image field */
+.acf-fields > .acf-wpb-image--2x  {
+	margin-top: -20px;
+}
+
+/* Styling for the "no image selected" text and "add image" button */
+.acf-wpb-image  p {
+	text-transform: lowercase;
+	font-style: italic;
+}
+
+/* Styling for the "add image" button */
+.acf-wpb-image  p > .acf-button {
+	font-style: normal;
+}
+
+/* Styling for the image uploader (it's basically a wrapper for the img */
+.acf-fields > .acf-wpb-image .acf-image-uploader {
+	display: inline-block;
+	padding: 20px;
+	border: 1px dashed #ccc;
+	border-radius: 4px;
+}
+
+/* Styling for the 2x image uploader */
+.acf-fields > .acf-wpb-image--2x .acf-image-uploader  {
+	padding: 10px 0 20px 0;
+	border: 0;
+}
+
+/* Styling for the image */
+.acf-fields > .acf-wpb-image img  {
+	background: #fff;
+	transform: rotate(-2deg);
+	border: 1px solid #ccc;
+	padding: 15px;
+	border-radius: 4px;
+}

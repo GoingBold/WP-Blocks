@@ -1,0 +1,290 @@
+/*
+@package WP Blocks
+@author GoingBold
+@since WP Blocks 1.0
+
+This CSS file contains the CSS to style the 'Hero' block (included with the WP Blocks plugin)
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+1 Hero
+	1.1 Typography
+	1.2 Blocks
+		1.2.1 Responsive
+	1.3 Links
+	1.4 Accessibility
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+1 Hero
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+1.1 Typography
+--------------------------------------------------------------*/
+.wpb-hero .p--wpb-hero,
+.wpb-hero .heading--wpb-hero {
+	color: #fff;
+	font-weight: 700;
+	margin: 0;
+	font-size: 2em;
+	line-height: 1.25em;
+}
+
+/**
+ * As 'the_content()' wraps 'a tags' in 'p tags' we put one in (and style it as needed).
+ * Targeting with '#content' to overwrite default p.
+ */
+#content .wpb-hero .p--wpb-hero--btn-wrapper {
+	margin: 1em 0 0;
+}
+
+/*--------------------------------------------------------------
+1.2 Blocks
+--------------------------------------------------------------*/
+/* Main hero wrapper */
+.wpb-hero {
+	position: relative;
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	padding: 200px 6.5% 100px;
+	background-color: #5796da;
+}
+
+/* Base styles for gradient */
+.wpb-hero:after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-position: bottom center;
+	background-repeat: no-repeat;
+}
+
+/* Used to add opacity and colour to hero/section background image (colour and opacity added inline as chosen by user) */
+.wpb-hero__opacity {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #ffffff;
+}
+
+.wpb-gradient-xxs:after {
+	content: "";
+	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/b-t/wpb-gradient-vertical-xxs.png);
+	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/b-t/wpb-gradient-vertical-xxs.svg);
+}
+
+.wpb-gradient-xs:after {
+	content: "";
+	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/b-t/wpb-gradient-vertical-xs.png);
+	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/b-t/wpb-gradient-vertical-xs.svg);
+}
+
+.wpb-gradient-s:after {
+	content: "";
+	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/b-t/wpb-gradient-vertical-s.png);
+	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/b-t/wpb-gradient-vertical-s.svg);
+}
+
+.wpb-gradient-m:after {
+	content: "";
+	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/b-t/wpb-gradient-vertical-m.png);
+	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/b-t/wpb-gradient-vertical-m.svg);
+}
+
+.wpb-gradient-l:after {
+	content: "";
+	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/b-t/wpb-gradient-vertical-l.png);
+	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/b-t/wpb-gradient-vertical-l.svg);
+}
+
+.wpb-gradient-xl:after {
+	content: "";
+	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/b-t/wpb-gradient-vertical-xl.png);
+	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/b-t/wpb-gradient-vertical-xl.svg);
+}
+
+/* Sets the position of the gradient for l-r (left to right) */
+.wpb-gradient-xxs--l-r:after,
+.wpb-gradient-xs--l-r:after,
+.wpb-gradient-s--l-r:after,
+.wpb-gradient-m--l-r:after,
+.wpb-gradient-l--l-r:after,
+.wpb-gradient-xl--l-r:after {
+	content: "";
+	background-position: center left;
+	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/l-r/wpb-gradient-l-r-xxs.png);
+	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/l-r/wpb-gradient-l-r-xxs.svg);
+}
+
+.wpb-gradient-xs--l-r:after {
+	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/l-r/wpb-gradient-l-r-xs.png);
+	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/l-r/wpb-gradient-l-r-xs.svg);
+}
+
+.wpb-gradient-s--l-r:after {
+	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/l-r/wpb-gradient-l-r-s.png);
+	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/l-r/wpb-gradient-l-r-s.svg);
+}
+
+.wpb-gradient-m--l-r:after {
+	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/l-r/wpb-gradient-l-r-m.png);
+	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/l-r/wpb-gradient-l-r-m.svg);
+}
+
+.wpb-gradient-l--l-r:after {
+	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/l-r/wpb-gradient-l-r-l.png);
+	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/l-r/wpb-gradient-l-r-l.svg);
+}
+
+.wpb-gradient-xl--l-r:after {
+	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/l-r/wpb-gradient-l-r-xl.png);
+	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/l-r/wpb-gradient-l-r-xl.svg);
+}
+
+.wpb-hero__content-container {
+	position: relative;
+	z-index: 1;
+}
+
+/* Sets the position of the gradient for r-l (right to left) */
+.wpb-gradient-xxs--r-l:after,
+.wpb-gradient-xs--r-l:after,
+.wpb-gradient-s--r-l:after,
+.wpb-gradient-m--r-l:after,
+.wpb-gradient-l--r-l:after,
+.wpb-gradient-xl--r-l:after {
+	content: "";
+	background-position: center right;
+	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/r-l/wpb-gradient-r-l-xxs.png);
+	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/r-l/wpb-gradient-r-l-xxs.svg);
+}
+
+.wpb-gradient-xs--r-l:after {
+	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/r-l/wpb-gradient-r-l-xs.png);
+	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/r-l/wpb-gradient-r-l-xs.svg);
+}
+
+.wpb-gradient-s--r-l:after {
+	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/r-l/wpb-gradient-r-l-s.png);
+	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/r-l/wpb-gradient-r-l-s.svg);
+}
+
+.wpb-gradient-m--r-l:after {
+	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/r-l/wpb-gradient-r-l-m.png);
+	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/r-l/wpb-gradient-r-l-m.svg);
+}
+
+.wpb-gradient-l--r-l:after {
+	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/r-l/wpb-gradient-r-l-l.png);
+	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/r-l/wpb-gradient-r-l-l.svg);
+}
+
+.wpb-gradient-xl--r-l:after {
+	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/r-l/wpb-gradient-r-l-xl.png);
+	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/r-l/wpb-gradient-r-l-xl.svg);
+}
+
+/*--------------------------------------------------------------
+1.2.1 Responsive
+--------------------------------------------------------------*/
+@media (min-width: 600px) {
+	.wpb-hero {
+		padding: 200px 10% 100px;
+	}
+
+	.wpb-hero .p--wpb-hero,
+	.wpb-hero .heading--wpb-hero {
+		font-size: 2.2em;
+	}
+}
+
+@media (min-width: 768px) {
+	.wpb-hero {
+		padding: 250px 18% 100px;
+	}
+
+	.wpb-hero .p--wpb-hero,
+	.wpb-hero .heading--wpb-hero {
+		font-size: 2.5em;
+	}
+}
+
+@media (min-width: 1120px) {
+	.wpb-hero {
+		padding: 400px 25% 100px;
+	}
+
+	.wpb-hero .p--wpb-hero,
+	.wpb-hero .heading--wpb-hero {
+		font-size: 3em;
+	}
+}
+
+/*--------------------------------------------------------------
+1.3 Links
+--------------------------------------------------------------*/
+/* everything that looks and feels like a button */
+.a--wpb-hero {
+	padding: 17px 48px;
+	display: inline-block;
+	background: #87bc52;
+	color: #000;
+	text-transform: uppercase;
+	font-weight: 700;
+	border: 0;
+	text-align: center;
+	-webkit-appearance: none; /* Removes ios styling */
+	border-radius: 0; /* Removes ios styling */
+}
+
+/* hover, focus and active styles for buttons (declarations above) */
+.a--wpb-hero:hover,
+.a--wpb-hero:active,
+.a--wpb-hero:focus {
+	background: #5b882f;
+	color: #fff;
+}
+
+/*--------------------------------------------------------------
+1.4 Accessibility
+--------------------------------------------------------------*/
+/* Text meant only for screen readers. */
+.wpb-hero .screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+}
+
+.wpb-hero .screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	clip-path: none;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-size: 0.875rem;
+	font-weight: bold;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000;
+	/* Above WP toolbar. */
+}
