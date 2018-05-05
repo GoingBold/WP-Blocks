@@ -1,0 +1,610 @@
+[
+    {
+        "key": "group_5aec56b396efe",
+        "title": "WP Blocks",
+        "fields": [
+            {
+                "key": "field_5aec56b3a04f6",
+                "label": "Blocks",
+                "name": "wp-blocks",
+                "type": "flexible_content",
+                "instructions": "Use WP Blocks to create any layout you can imagine.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "wp-blocks--content",
+                    "id": "wp-blocks"
+                },
+                "layouts": {
+                    "5a3d63c08e7d1": {
+                        "key": "5a3d63c08e7d1",
+                        "name": "hero",
+                        "label": "Hero",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_5aec56b3a25ab",
+                                "label": "",
+                                "name": "",
+                                "type": "message",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "wp-blocks-settings-intro",
+                                    "id": ""
+                                },
+                                "message": "<header>\r\n<h2><span>Customising <span class=\"dashicons dashicons-arrow-right\"><\/span> WP Blocks<span class=\"screen-reader-text\">: <\/span><\/span>Hero<\/h2>\r\n<\/header>",
+                                "new_lines": "wpautop",
+                                "esc_html": 0
+                            },
+                            {
+                                "key": "field_5aec56b3a262c",
+                                "label": "<span class=\"dashicons dashicons-text\"><\/span> Text",
+                                "name": "",
+                                "type": "accordion",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "open": 1,
+                                "multi_expand": 1,
+                                "endpoint": 0
+                            },
+                            {
+                                "key": "field_5aec56b3a26a9",
+                                "label": "Content",
+                                "name": "",
+                                "type": "tab",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "placement": "top",
+                                "endpoint": 0
+                            },
+                            {
+                                "key": "field_5aec56b3a2724",
+                                "label": "",
+                                "name": "txt",
+                                "type": "wysiwyg",
+                                "instructions": "Choose something relevant, short and snappy to grab your users attention.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "tabs": "all",
+                                "toolbar": "basic",
+                                "media_upload": 0,
+                                "delay": 1
+                            },
+                            {
+                                "key": "field_5aec56b3a279f",
+                                "label": "Settings",
+                                "name": "",
+                                "type": "tab",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "placement": "top",
+                                "endpoint": 0
+                            },
+                            {
+                                "key": "field_5aec56b3a281f",
+                                "label": "Text Align",
+                                "name": "txt-align",
+                                "type": "button_group",
+                                "instructions": "Left, center or right aligned?",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "left": "<span class=\"dashicons dashicons-editor-alignleft\">Left aligned<\/span>",
+                                    "center": "<span class=\"dashicons dashicons-editor-aligncenter\">Center aligned<\/span>",
+                                    "right": "<span class=\"dashicons dashicons-editor-alignright\">Right aligned<\/span>"
+                                },
+                                "allow_null": 0,
+                                "default_value": "center",
+                                "layout": "horizontal",
+                                "return_format": "value"
+                            },
+                            {
+                                "key": "field_5aec56b3a28a7",
+                                "label": "Text Colour",
+                                "name": "txt-col",
+                                "type": "color_picker",
+                                "instructions": "Set the text colour (<strong>default: #ffffff<\/strong>).",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "#ffffff"
+                            },
+                            {
+                                "key": "field_5aec56b3a2937",
+                                "label": "<span class=\"screen-reader-text\">Display as heading text?<\/span>",
+                                "name": "if-heading",
+                                "type": "true_false",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "wpb-true-false",
+                                    "id": ""
+                                },
+                                "message": "If this is the first block, or is used to start a section, then you'll want a heading. If this is midway through content then you may want to use paragraph text instead. N.B. This only changes the HTML that's used to structure the content, there is no visible difference.",
+                                "default_value": 0,
+                                "ui": 1,
+                                "ui_on_text": "Display as heading text",
+                                "ui_off_text": "Display as heading text"
+                            },
+                            {
+                                "key": "field_5aec56b3a29c3",
+                                "label": "Heading Level",
+                                "name": "heading",
+                                "type": "radio",
+                                "instructions": "To help people who use screen readers, it's important to use a heading structure that is logically structured. H1 is the first heading on the page, with the rest being H2's, H3's etc",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_5aec56b3a2937",
+                                            "operator": "==",
+                                            "value": "1"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "1": "H1",
+                                    "2": "H2",
+                                    "3": "H3",
+                                    "4": "H4",
+                                    "5": "H5"
+                                },
+                                "allow_null": 0,
+                                "other_choice": 0,
+                                "save_other_choice": 0,
+                                "default_value": 2,
+                                "layout": "horizontal",
+                                "return_format": "value"
+                            },
+                            {
+                                "key": "field_5aec56b3a2a44",
+                                "label": "",
+                                "name": "",
+                                "type": "tab",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "placement": "top",
+                                "endpoint": 1
+                            },
+                            {
+                                "key": "field_5aec56b3a2ac0",
+                                "label": "",
+                                "name": "",
+                                "type": "accordion",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "open": 1,
+                                "multi_expand": 1,
+                                "endpoint": 1
+                            },
+                            {
+                                "key": "field_5aec56b3a2b3b",
+                                "label": "<span class=\"dashicons dashicons-admin-links\"><\/span> Button \/ Link",
+                                "name": "",
+                                "type": "accordion",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "open": 0,
+                                "multi_expand": 1,
+                                "endpoint": 0
+                            },
+                            {
+                                "key": "field_5aec56b3a2bb7",
+                                "label": "Link",
+                                "name": "url",
+                                "type": "link",
+                                "instructions": "Where do you want to link? If it's a page\/post on this site, just start typing the name of the post\/page and it'll pop up.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "return_format": "array"
+                            },
+                            {
+                                "key": "field_5aec56b3a2c37",
+                                "label": "",
+                                "name": "",
+                                "type": "accordion",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "open": 0,
+                                "multi_expand": 1,
+                                "endpoint": 1
+                            },
+                            {
+                                "key": "field_5aec56b3a2cbf",
+                                "label": "<span class=\"dashicons dashicons-format-image\"><\/span> Background",
+                                "name": "",
+                                "type": "accordion",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "open": 0,
+                                "multi_expand": 1,
+                                "endpoint": 0
+                            },
+                            {
+                                "key": "field_5aec56b3a2d4e",
+                                "label": "Content",
+                                "name": "",
+                                "type": "tab",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "placement": "top",
+                                "endpoint": 0
+                            },
+                            {
+                                "key": "field_5aec56b3a2dd1",
+                                "label": "Image",
+                                "name": "img",
+                                "type": "image",
+                                "instructions": "Choose an image for the background of the hero. Psst, choose something awesome!",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "return_format": "url",
+                                "preview_size": "medium",
+                                "library": "all",
+                                "min_width": "",
+                                "min_height": "",
+                                "min_size": "",
+                                "max_width": "",
+                                "max_height": "",
+                                "max_size": "",
+                                "mime_types": ""
+                            },
+                            {
+                                "key": "field_5aec56b3a2e4c",
+                                "label": "...and choose a background colour",
+                                "name": "back-col",
+                                "type": "color_picker",
+                                "instructions": "If you don't want to display an image, or your image doesn't cover the whole hero frame, then this background colour will display (<strong>default: #5796da<\/strong>).",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "#5796da"
+                            },
+                            {
+                                "key": "field_5aec56b3a2ec7",
+                                "label": "Settings",
+                                "name": "",
+                                "type": "tab",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "placement": "top",
+                                "endpoint": 0
+                            },
+                            {
+                                "key": "field_5aec56b3a2f42",
+                                "label": "Gradient",
+                                "name": "grad",
+                                "type": "button_group",
+                                "instructions": "Choose a gradient that will be applied to the background.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "cp-choose-gradient",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "xxs": "<span class=\"xxs\">Extra Extra Small<\/span>",
+                                    "xs": "<span class=\"xs\">Extra Small<\/span>",
+                                    "s": "<span class=\"s\">Small<\/span>",
+                                    "m": "<span class=\"m\">Medium<\/span>",
+                                    "l": "<span class=\"l\">Large<\/span>",
+                                    "xl": "<span class=\"xl\">Extra Large<\/span>",
+                                    "xxs--l-r": "<span class=\"xxs--l-r\">Extra Extra Small (L-R)<\/span>",
+                                    "xs--l-r": "<span class=\"xs--l-r\">Extra Small (L-R)<\/span>",
+                                    "s--l-r": "<span class=\"s--l-r\">Small (L-R)<\/span>",
+                                    "m--l-r": "<span class=\"m--l-r\">Medium (L-R)<\/span>",
+                                    "l--l-r": "<span class=\"l--l-r\">Large (L-R)<\/span>",
+                                    "xl--l-r": "<span class=\"xl--l-r\">Extra Large (L-R)<\/span>",
+                                    "xxs--r-l": "<span class=\"xxs--r-l\">Extra Extra Small (R-L)<\/span>",
+                                    "xs--r-l": "<span class=\"xs--r-l\">Extra Small (R-L)<\/span>",
+                                    "s--r-l": "<span class=\"s--r-l\">Small (R-L)<\/span>",
+                                    "m--r-l": "<span class=\"m--r-l\">Medium (R-L)<\/span>",
+                                    "l--r-l": "<span class=\"l--r-l\">Large (R-L)<\/span>",
+                                    "xl--r-l": "<span class=\"xl--r-l\">Extra Large (R-L)<\/span>"
+                                },
+                                "allow_null": 1,
+                                "default_value": "",
+                                "layout": "horizontal",
+                                "return_format": "value"
+                            },
+                            {
+                                "key": "field_5aec56b3a2fbb",
+                                "label": "Background Image Align (Vertical)",
+                                "name": "img-align-y",
+                                "type": "button_group",
+                                "instructions": "Choose from center (default), top or bottom. There's no horizontal align as the background image is set to cover the hero.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "center": "<span class=\"dashicons dashicons-align-center\"><\/span> Center",
+                                    "top": "<span class=\"dashicons dashicons-arrow-up-alt2\"><\/span> Top",
+                                    "bottom": "<span class=\"dashicons dashicons-arrow-down-alt2\"><\/span> Bottom"
+                                },
+                                "allow_null": 0,
+                                "default_value": "center",
+                                "layout": "horizontal",
+                                "return_format": "value"
+                            },
+                            {
+                                "key": "field_5aec56b3a3040",
+                                "label": "<span class=\"screen-reader-text\">Opacity<\/span>",
+                                "name": "if-opacity",
+                                "type": "true_false",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "wpb-true-false",
+                                    "id": ""
+                                },
+                                "message": "Helps to add a little more separation between the background image and text.",
+                                "default_value": 0,
+                                "ui": 1,
+                                "ui_on_text": "Change opacity",
+                                "ui_off_text": "Change opacity"
+                            },
+                            {
+                                "key": "field_5aec56b3a30bf",
+                                "label": "<span class=\"screen-reader-text\">Choose Opacity<\/span>",
+                                "name": "opacity",
+                                "type": "range",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_5aec56b3a3040",
+                                            "operator": "==",
+                                            "value": "1"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": 5,
+                                "min": 1,
+                                "max": 9,
+                                "step": "",
+                                "prepend": "",
+                                "append": ""
+                            },
+                            {
+                                "key": "field_5aec56b3a313f",
+                                "label": "Opacity Colour",
+                                "name": "opac-col",
+                                "type": "color_picker",
+                                "instructions": "Choose a background colour and combine it with opacity and a gradient to create a super-cool-colour-opacity-gradient image overlay. Or just choose a colour for the opacity. (<strong>default: #ffffff<\/strong>).",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_5aec56b3a3040",
+                                            "operator": "==",
+                                            "value": "1"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "#ffffff"
+                            },
+                            {
+                                "key": "field_5aec56b3a31c7",
+                                "label": "",
+                                "name": "",
+                                "type": "tab",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "placement": "top",
+                                "endpoint": 1
+                            },
+                            {
+                                "key": "field_5aec56b3a3246",
+                                "label": "<span class=\"dashicons dashicons-admin-generic\"><\/span> More",
+                                "name": "",
+                                "type": "accordion",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "open": 0,
+                                "multi_expand": 1,
+                                "endpoint": 0
+                            },
+                            {
+                                "key": "field_5aec56b3a32bf",
+                                "label": "<span class=\"dashicons dashicons-editor-code\"><\/span> Custom Class",
+                                "name": "class",
+                                "type": "text",
+                                "instructions": "If you would like to add a custom class, do so here.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "placeholder": "Enter Class (don't prefix with dot)",
+                                "prepend": "",
+                                "append": "",
+                                "maxlength": ""
+                            },
+                            {
+                                "key": "field_5aec56b3a3338",
+                                "label": "<span class=\"dashicons dashicons-editor-code\"><\/span> Custom ID",
+                                "name": "id",
+                                "type": "text",
+                                "instructions": "If you would like to add a custom ID, do so here.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "placeholder": "Enter ID (don't prefix with hash)",
+                                "prepend": "",
+                                "append": "",
+                                "maxlength": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    }
+                },
+                "button_label": "Add Block",
+                "min": "",
+                "max": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "page"
+                }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "post"
+                }
+            ]
+        ],
+        "menu_order": 1,
+        "position": "acf_after_title",
+        "style": "seamless",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": 1,
+        "description": ""
+    }
+]
