@@ -6,7 +6,7 @@ WP Blocks is a full WYSIWYG content management solution for WordPress. It's buil
 
 ## User guide
 
-*This is version 1.0.0 of the user guide. Lots more images, more beginner friendly language, and more in-depth tutorials are coming soon.*
+*This is version 1.0.0 of the user guide. Lots more images, more beginner friendly language, and more in-depth tutorials are coming soon (along with [Standard Readme formatting](https://github.com/RichardLitt/standard-readme)).*
 
 **If you're a PHP or JavaScript developer then help make WP Blocks even better! Please lend a hand and contribute on Github.**
 
