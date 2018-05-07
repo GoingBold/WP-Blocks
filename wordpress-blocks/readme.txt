@@ -1,4 +1,4 @@
-=== Campaign Pro Exp 1 ===
+=== WP Blocks ===
 Contributors: going bold
 Tags: wpb, WP Blocks, WYSIWYG
 Requires at least: 3.6.0
@@ -31,7 +31,7 @@ support@goingbold.co.uk
 
 == Installation ==
 
-1. Upload 'wp-blocks' to the '/wp-content/plugins/' directory
+1. Upload 'wordpress-blocks' to the '/wp-content/plugins/' directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 4. Done!
 
