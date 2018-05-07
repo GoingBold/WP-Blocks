@@ -32,7 +32,7 @@ To demonstrate WP Blocks this plugin has been created, with one block, a hero, w
 ## Features of this plugin
 
 * Custom gradient settings, so users can choose from a range of gradients for the hero
-* A text field (using the [wysiwyg field type](https://www.advancedcustomfields.com/resources/wysiwyg-editor/ "Info on the WYSIWYG field type on advancedcustomfields.com")
+* A text field (using the [wysiwyg field type](https://www.advancedcustomfields.com/resources/wysiwyg-editor/ "Info on the WYSIWYG field type on advancedcustomfields.com"))
 * Ability to add a background image
 * Ability to set opacity (and set opacity colour)
 * Ability to add a button to the hero
@@ -144,7 +144,7 @@ The main people in charge of this repo are:
 
 ## Contribute
 
-To contribute, please use GitHub <a href="https://github.com/flyntwp/flynt-starter-theme/issues">issues</a>. Pull requests are accepted.
+To contribute, please use GitHub <a href="https://github.com/GoingBold/WP-Blocks/issues">issues</a>. Pull requests are accepted.
 
 ## Licence
 
