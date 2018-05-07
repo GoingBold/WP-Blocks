@@ -8,7 +8,7 @@ WP Blocks is a full WYSIWYG content management solution for WordPress. It's buil
 
 **If you're a PHP or JavaScript developer then help make WP Blocks even better! Please lend a hand and contribute on Github.**
 
-## Table of Contents
+## Table of contents
 * [Background](#background)
 * [Features of this plugin](#features-of-this-plugin)
 * [Install](#install)
