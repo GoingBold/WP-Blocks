@@ -1162,8 +1162,8 @@ html.wp-toolbar {
 	width: 20px;
 	overflow: hidden;
 	text-indent: -9999px;
-	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/admin/gradients/wpb-gradient-icon-sprite.png);
-	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/admin/gradients/wpb-gradient-icon-sprite.svg);
+	background-image: url(../../assets/img/admin/gradients/wpb-gradient-icon-sprite.png);
+	background-image: linear-gradient(transparent,transparent),url(../../assets/img/admin/gradients/wpb-gradient-icon-sprite.svg);
 	background-repeat: no-repeat;
 }
 
