@@ -1,11 +1,11 @@
 /*
-JS for Campaign Pro admin pages
+JS for post edit screen
 
-@package Campaign_Pro
+@package wp_blocks
 @since 1.0
 @version 1.0
 
-Campaign Pro (C) 2017-2018 GoingBold, Ltd.
+(C) 2017-2018 GoingBold, Ltd.
 */
 
 let scrollPosition = 0; //https://stackoverflow.com/a/45230674/6561019
@@ -179,5 +179,24 @@ jQuery(function($) {
 		setTimeout(function(){
 			$('.wp-color-result').attr('onClick', 'colourBtnFix()');
 		}, 10);
+	});
+});
+
+/**
+ * Called when the window has loaded all assets.
+ *
+ * @link https://www.advancedcustomfields.com/resources/adding-custom-javascript-fields/
+ *
+ */
+acf.add_action('load', function( $el ){
+
+	/**
+	 * When clicking 'button-primary--wpb-show-default-editor' toggle display of
+	 * default editor. The button appears in a notice on the post edit screen if
+	 * 'the_content()' is not empty and there are no WP Blocks. The notice advises
+	 * that WP Blocks will replace anything in 'the_content()'.
+	 */
+	$(document).on('click', '.button-primary--wpb-show-default-editor', function () {
+		$( "#postdivrich.postarea" ).toggle();
 	});
 });
