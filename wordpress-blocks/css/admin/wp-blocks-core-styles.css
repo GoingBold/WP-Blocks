@@ -320,8 +320,8 @@ html.wp-toolbar {
 	position: relative;
 	top: 0;
 	right: 0;
-	width: inherit;
-	height: inherit;
+	width: 18px;
+	height: 18px;
 	border: inherit;
 	border-radius: 999px;
 	border: 0 !important;
@@ -330,7 +330,7 @@ html.wp-toolbar {
 
 #wp-blocks .acf-flexible-content .layout.-collapsed .acf-fc-layout-controlls .acf-icon.-collapse:before {
 	content: '\f464';
-	top: -1px;
+	top: 0;
 	font-size: initial;
 }
 
