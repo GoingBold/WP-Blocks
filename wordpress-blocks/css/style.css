@@ -74,38 +74,38 @@ This CSS file contains the CSS to style the 'Hero' block (included with the WP B
 
 .wpb-gradient-xxs:after {
 	content: "";
-	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/b-t/wpb-gradient-vertical-xxs.png);
-	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/b-t/wpb-gradient-vertical-xxs.svg);
+	background-image: url(../assets/img/gradients/b-t/wpb-gradient-vertical-xxs.png);
+	background-image: linear-gradient(transparent,transparent),url(../assets/img/gradients/b-t/wpb-gradient-vertical-xxs.svg);
 }
 
 .wpb-gradient-xs:after {
 	content: "";
-	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/b-t/wpb-gradient-vertical-xs.png);
-	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/b-t/wpb-gradient-vertical-xs.svg);
+	background-image: url(../assets/img/gradients/b-t/wpb-gradient-vertical-xs.png);
+	background-image: linear-gradient(transparent,transparent),url(../assets/img/gradients/b-t/wpb-gradient-vertical-xs.svg);
 }
 
 .wpb-gradient-s:after {
 	content: "";
-	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/b-t/wpb-gradient-vertical-s.png);
-	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/b-t/wpb-gradient-vertical-s.svg);
+	background-image: url(../assets/img/gradients/b-t/wpb-gradient-vertical-s.png);
+	background-image: linear-gradient(transparent,transparent),url(../assets/img/gradients/b-t/wpb-gradient-vertical-s.svg);
 }
 
 .wpb-gradient-m:after {
 	content: "";
-	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/b-t/wpb-gradient-vertical-m.png);
-	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/b-t/wpb-gradient-vertical-m.svg);
+	background-image: url(../assets/img/gradients/b-t/wpb-gradient-vertical-m.png);
+	background-image: linear-gradient(transparent,transparent),url(../assets/img/gradients/b-t/wpb-gradient-vertical-m.svg);
 }
 
 .wpb-gradient-l:after {
 	content: "";
-	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/b-t/wpb-gradient-vertical-l.png);
-	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/b-t/wpb-gradient-vertical-l.svg);
+	background-image: url(../assets/img/gradients/b-t/wpb-gradient-vertical-l.png);
+	background-image: linear-gradient(transparent,transparent),url(../assets/img/gradients/b-t/wpb-gradient-vertical-l.svg);
 }
 
 .wpb-gradient-xl:after {
 	content: "";
-	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/b-t/wpb-gradient-vertical-xl.png);
-	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/b-t/wpb-gradient-vertical-xl.svg);
+	background-image: url(../assets/img/gradients/b-t/wpb-gradient-vertical-xl.png);
+	background-image: linear-gradient(transparent,transparent),url(../assets/img/gradients/b-t/wpb-gradient-vertical-xl.svg);
 }
 
 /* Sets the position of the gradient for l-r (left to right) */
@@ -117,33 +117,33 @@ This CSS file contains the CSS to style the 'Hero' block (included with the WP B
 .wpb-gradient-xl--l-r:after {
 	content: "";
 	background-position: center left;
-	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/l-r/wpb-gradient-l-r-xxs.png);
-	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/l-r/wpb-gradient-l-r-xxs.svg);
+	background-image: url(../assets/img/gradients/l-r/wpb-gradient-l-r-xxs.png);
+	background-image: linear-gradient(transparent,transparent),url(../assets/img/gradients/l-r/wpb-gradient-l-r-xxs.svg);
 }
 
 .wpb-gradient-xs--l-r:after {
-	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/l-r/wpb-gradient-l-r-xs.png);
-	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/l-r/wpb-gradient-l-r-xs.svg);
+	background-image: url(../assets/img/gradients/l-r/wpb-gradient-l-r-xs.png);
+	background-image: linear-gradient(transparent,transparent),url(../assets/img/gradients/l-r/wpb-gradient-l-r-xs.svg);
 }
 
 .wpb-gradient-s--l-r:after {
-	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/l-r/wpb-gradient-l-r-s.png);
-	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/l-r/wpb-gradient-l-r-s.svg);
+	background-image: url(../assets/img/gradients/l-r/wpb-gradient-l-r-s.png);
+	background-image: linear-gradient(transparent,transparent),url(../assets/img/gradients/l-r/wpb-gradient-l-r-s.svg);
 }
 
 .wpb-gradient-m--l-r:after {
-	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/l-r/wpb-gradient-l-r-m.png);
-	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/l-r/wpb-gradient-l-r-m.svg);
+	background-image: url(../assets/img/gradients/l-r/wpb-gradient-l-r-m.png);
+	background-image: linear-gradient(transparent,transparent),url(../assets/img/gradients/l-r/wpb-gradient-l-r-m.svg);
 }
 
 .wpb-gradient-l--l-r:after {
-	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/l-r/wpb-gradient-l-r-l.png);
-	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/l-r/wpb-gradient-l-r-l.svg);
+	background-image: url(../assets/img/gradients/l-r/wpb-gradient-l-r-l.png);
+	background-image: linear-gradient(transparent,transparent),url(../assets/img/gradients/l-r/wpb-gradient-l-r-l.svg);
 }
 
 .wpb-gradient-xl--l-r:after {
-	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/l-r/wpb-gradient-l-r-xl.png);
-	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/l-r/wpb-gradient-l-r-xl.svg);
+	background-image: url(../assets/img/gradients/l-r/wpb-gradient-l-r-xl.png);
+	background-image: linear-gradient(transparent,transparent),url(../assets/img/gradients/l-r/wpb-gradient-l-r-xl.svg);
 }
 
 .wpb-hero__content-container {
@@ -160,33 +160,33 @@ This CSS file contains the CSS to style the 'Hero' block (included with the WP B
 .wpb-gradient-xl--r-l:after {
 	content: "";
 	background-position: center right;
-	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/r-l/wpb-gradient-r-l-xxs.png);
-	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/r-l/wpb-gradient-r-l-xxs.svg);
+	background-image: url(../assets/img/gradients/r-l/wpb-gradient-r-l-xxs.png);
+	background-image: linear-gradient(transparent,transparent),url(../assets/img/gradients/r-l/wpb-gradient-r-l-xxs.svg);
 }
 
 .wpb-gradient-xs--r-l:after {
-	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/r-l/wpb-gradient-r-l-xs.png);
-	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/r-l/wpb-gradient-r-l-xs.svg);
+	background-image: url(../assets/img/gradients/r-l/wpb-gradient-r-l-xs.png);
+	background-image: linear-gradient(transparent,transparent),url(../assets/img/gradients/r-l/wpb-gradient-r-l-xs.svg);
 }
 
 .wpb-gradient-s--r-l:after {
-	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/r-l/wpb-gradient-r-l-s.png);
-	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/r-l/wpb-gradient-r-l-s.svg);
+	background-image: url(../assets/img/gradients/r-l/wpb-gradient-r-l-s.png);
+	background-image: linear-gradient(transparent,transparent),url(../assets/img/gradients/r-l/wpb-gradient-r-l-s.svg);
 }
 
 .wpb-gradient-m--r-l:after {
-	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/r-l/wpb-gradient-r-l-m.png);
-	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/r-l/wpb-gradient-r-l-m.svg);
+	background-image: url(../assets/img/gradients/r-l/wpb-gradient-r-l-m.png);
+	background-image: linear-gradient(transparent,transparent),url(../assets/img/gradients/r-l/wpb-gradient-r-l-m.svg);
 }
 
 .wpb-gradient-l--r-l:after {
-	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/r-l/wpb-gradient-r-l-l.png);
-	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/r-l/wpb-gradient-r-l-l.svg);
+	background-image: url(../assets/img/gradients/r-l/wpb-gradient-r-l-l.png);
+	background-image: linear-gradient(transparent,transparent),url(../assets/img/gradients/r-l/wpb-gradient-r-l-l.svg);
 }
 
 .wpb-gradient-xl--r-l:after {
-	background-image: url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/r-l/wpb-gradient-r-l-xl.png);
-	background-image: linear-gradient(transparent,transparent),url(/wp-content/plugins/wordpress-blocks/assets/img/gradients/r-l/wpb-gradient-r-l-xl.svg);
+	background-image: url(../assets/img/gradients/r-l/wpb-gradient-r-l-xl.png);
+	background-image: linear-gradient(transparent,transparent),url(../assets/img/gradients/r-l/wpb-gradient-r-l-xl.svg);
 }
 
 /*--------------------------------------------------------------
