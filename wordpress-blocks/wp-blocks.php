@@ -217,7 +217,7 @@ if( ! class_exists('wp_blocks') ) :
 								if( get_row_layout() == 'hero' ):
 
 									// Get the file /inc/partials/hero.php (which contains the relevant block layouts)
-									include_once( 'inc/partials/hero-front-end.php' );
+									include( 'inc/partials/hero-front-end.php' );
 
 								endif;
 
